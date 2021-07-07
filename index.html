@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebApp</title>
+</head>
+<body>
+    <div class="parent-wrapper">
+        <div class="header-wrapper">
+            <img class="left-logo" src="ABC.svg">
+            <img class="centre-logo" src="logo.svg">
+        </div>
+        <div class="info-wrapper">Invoice List</div>
+        <div class="table-btn-wrapper" id="table_btn_wrapper_id">
+            <div class="overlay" id="model_add">
+                <div class="add-invoice">
+                    <div class="add-invoice-text">
+                        <span>Add Invoice</span>
+                    </div>
+                    <button class="cancel_back" id="cancel_id" onclick="cancel_add(this)"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24.033 24.033"><defs><style>.a{fill:#c0c6ca;}.b{fill:none;}</style></defs><g transform="translate(0.001)"><path class="a" d="M24.635,6.977,22.657,5l-7.84,7.84L6.977,5,5,6.977l7.84,7.84L5,22.657l1.977,1.977,7.84-7.84,7.84,7.84,1.977-1.977-7.84-7.84Z" transform="translate(-2.811 -2.81)"/><path class="b" d="M0,0H24.033V24.033H0Z" transform="translate(-0.001)"/></g>
+                    </svg></button>
+                </div>
+                <div class="add-data">
+                    <div class="strip1">
+                        <label for="CustomerName" class="name">Customer Name*</label>
+                        <input type="text" name="CustomerName*">
+                        <label for="DueDate" class="name">Due Date*</label>
+                        <input type="date" name="DueDate*"></div>
+                    <div class="strip2">
+                        <label for="CustomerNo" class="no">Customer No*</label>
+                        <input type="text" name="CustomerNo">
+                        <label for="Notes" class="notes">Notes</label>
+                        <textarea class="notes-size" name="Notes"></textarea>
+                    </div>
+                    <div class="strip3">
+                        <label for="InvoieNo." class="invno">Invoice No*</label>
+                        <input type="text" name="InvoiceNo.">
+                    </div>
+                    <div class="strip4">
+                        <label for="InvoiceAmount" class="invamo">Invoice Amount*</label>
+                      <input type="text" name="InvoiceAmount">
+                    </div>
+                </div>
+                <div class="cancel-btn" id="cancel">
+                    <button onclick="cancel_add(this)" class="btn">Cancel</button>
+                    <button class="clear">Clear</button>
+                    <button class="adding-data">Add</button>
+                </div>
+            </div>
+            <div class="overlay2" id="model_edit">
+                <div class="edit1">
+                    <div class="edit-invoice">
+                        <span>Edit Invoice</span>
+                    </div>
+                    <button class="cancel_back" id="cancel_edit" onclick="cancel_edit(this)"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24.033 24.033"><defs><style>.a{fill:#c0c6ca;}.b{fill:none;}</style></defs><g transform="translate(0.001)"><path class="a" d="M24.635,6.977,22.657,5l-7.84,7.84L6.977,5,5,6.977l7.84,7.84L5,22.657l1.977,1.977,7.84-7.84,7.84,7.84,1.977-1.977-7.84-7.84Z" transform="translate(-2.811 -2.81)"/><path class="b" d="M0,0H24.033V24.033H0Z" transform="translate(-0.001)"/></g>
+                </svg></button></div>
+                <div class="edit2">
+                    <div class="edit-strip1">
+                        <label for="InvoiceAmount" class="edtinvamo">Invoice Amount</label>
+                        <input type="text" name="InvoiceAmount">
+                    </div>
+                    <div class="edit-strip2">
+                        <label for="Notes" class="edtnotes">Notes</label>
+                        <input type="text" name="Notes">
+                    </div>
+                </div>
+                <div class="edit3">
+                    <button class="can-btn"onclick="cancel_edit(this)">Cancel</button>
+                    <button class="res-btn">Reset</button>
+                    <button class="sav-btn">Save</button>
+                </div>
+            </div>
+            <div class="overlay3" id="model_delete">
+                <div class="del1">
+                    <div class="del-rec">
+                    <span>Delete Record(s)</span>
+                    </div>
+                    <button class="cancel_back" id="cancel_id3" onclick="cancel_delete(this)"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24.033 24.033"><defs><style>.a{fill:#c0c6ca;}.b{fill:none;}</style></defs><g transform="translate(0.001)"><path class="a" d="M24.635,6.977,22.657,5l-7.84,7.84L6.977,5,5,6.977l7.84,7.84L5,22.657l1.977,1.977,7.84-7.84,7.84,7.84,1.977-1.977-7.84-7.84Z" transform="translate(-2.811 -2.81)"/><path class="b" d="M0,0H24.033V24.033H0Z" transform="translate(-0.001)"/></g>
+                    </svg></button>
+                </div>
+                <div class="del2"><span class="upper-para">You'll lose your record(s) after this action. We can't recover them once you delete.</span><span class="lower-para"> Are you sure you want to <span class="red">permanently delete</span> them?</span>
+                </div>
+                <div class="del3">
+                    <button class="can-del" onclick="cancel_delete()">Cancel</button>
+                    <button class="del-del">Delete</button>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <button class="add" id="add_id">
+                    <span class="icon">
+                        <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="10px" height="10px"><path fill-rule="evenodd" d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"/></svg>
+                    </span>
+                    Add
+                </button>
+                <button class="edit" id="edit_id">
+                    <span class="icon">
+                        <svg fill="white" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 19.171875 2 C 18.448125 2 17.724375 2.275625 17.171875 2.828125 L 16 4 L 20 8 L 21.171875 6.828125 C 22.275875 5.724125 22.275875 3.933125 21.171875 2.828125 C 20.619375 2.275625 19.895625 2 19.171875 2 z M 14.5 5.5 L 3 17 L 3 21 L 7 21 L 18.5 9.5 L 14.5 5.5 z"/>
+                        </svg>
+                    </span>
+                    Edit
+                </button>
+                <button class="delete" id="delete_id">
+                    <span class="icon">
+                        <svg fill="white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="110.875px" height="28.489px" viewBox="0 0 122.875 28.489" enable-background="new 0 0 122.875 28.489" xml:space="preserve"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M108.993,0c7.683-0.059,13.898,6.12,13.882,13.805 c-0.018,7.682-6.26,13.958-13.942,14.018c-31.683,0.222-63.368,0.444-95.051,0.666C6.2,28.549-0.016,22.369,0,14.685 C0.018,7.002,6.261,0.726,13.943,0.667C45.626,0.445,77.311,0.223,108.993,0L108.993,0z"/></g>
+                        </svg>
+                    </span>
+                        Delete
+                    </button>
+                    <div class="input-icon-wrapper">
+                        <input class="find" type="text" maxlength=20 placeholder="Search by Invoice Number">
+                        <svg class="mag" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 9 2 C 5.1458514 2 2 5.1458514 2 9 C 2 12.854149 5.1458514 16 9 16 C 10.747998 16 12.345009 15.348024 13.574219 14.28125 L 14 14.707031 L 14 16 L 20 22 L 22 20 L 16 14 L 14.707031 14 L 14.28125 13.574219 C 15.348024 12.345009 16 10.747998 16 9 C 16 5.1458514 12.854149 2 9 2 z M 9 4 C 11.773268 4 14 6.2267316 14 9 C 14 11.773268 11.773268 14 9 14 C 6.2267316 14 4 11.773268 4 9 C 4 6.2267316 6.2267316 4 9 4 z"/>
+                    </svg>
+                    </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>Customer Name</th>
+                        <th>Customer #</th>
+                        <th>Invoice #</th>
+                        <th>Invoice Amount</th>
+                        <th>Due Date</th>
+                        <th>Predicted Payment Date</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <td>Google</td>
+                        <td>9518</td>
+                        <td>6369</td>
+                        <td>1:32:50</td>
+                        <td>25-Jan-2020</td>
+                        <td>25-Feb-2020</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    </tr>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <td>Twitter</td>
+                        <td>7326</td>
+                        <td>10437</td>
+                        <td>0:51:22</td>
+                        <td>25-Jan-2020</td>
+                        <td>25-Feb-2020</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    </tr>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <td>Amazon</td>
+                        <td>4162</td>
+                        <td>5327</td>
+                        <td>0:24:34</td>
+                        <td>25-Jan-2020</td>
+                        <td>25-Feb-2020</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    </tr>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <td>LinkedIn</td>
+                        <td>3654</td>
+                        <td>2961</td>
+                        <td>0:12:10</td>
+                        <td>25-Jan-2020</td>
+                        <td>25-Feb-2020</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
